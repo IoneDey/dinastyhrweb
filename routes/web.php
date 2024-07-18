@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\FasilitasController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------

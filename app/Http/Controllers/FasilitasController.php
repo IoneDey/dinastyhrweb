@@ -6,7 +6,13 @@ use Illuminate\Http\Request;
 
 class FasilitasController extends Controller {
     //
+
     public function makan() {
-        return view('fasilitas.makan');
+        $qrCodeScanned = "";
+
+        return view(
+            'fasilitas.makan',
+            ['qrCodeScanned' => $qrCodeScanned]
+        );
     }
 }
