@@ -9,20 +9,13 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # Redirect Trailing Slashes If Not A Folder...
+    # Redirect Trailing Slashes...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
-    RewriteRule ^(.*)$ /public/$1 [L,QSA]
 
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
-
-        # Additional settings to handle css, js, and image files correctly
-        <FilesMatch "\.(css|js|ico|png|jpg|jpeg|gif|svg)$">
-        Header set Cache-Control "max-age=31536000, public"
-    </FilesMatch>
-
 </IfModule>
