@@ -10,6 +10,7 @@ class FasilitasController extends Controller {
     public function makan() {
         $qrCodeScanned = "";
 
+
         return view(
             'fasilitas.makan',
             ['qrCodeScanned' => $qrCodeScanned]

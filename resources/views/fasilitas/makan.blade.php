@@ -1,3 +1,5 @@
+<!-- resources/views/your-view.blade.php -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,21 +28,39 @@
         }
 
         docReady(function() {
-            var resultContainer = document.getElementById('qr-reader-results');
-            var lastResult, countResults = 0;
+            var lastResult;
 
             function onScanSuccess(decodedText, decodedResult) {
                 if (decodedText !== lastResult) {
-                    ++countResults;
                     lastResult = decodedText;
-                    // Handle on success condition with the decoded message.
-                    // console.log(`Scan result ${decodedText}`, decodedResult);
-                    // resultContainer.innerText = `Scan result ${decodedText}`;
-
-                    Livewire.dispatch('qrCodeScanned', {
-                        decodedText: decodedText
-                    });
+                    sendDataToServer(decodedText);
                 }
+            }
+
+            function sendDataToServer(data) {
+                fetch('/process-qr-code', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            qrCodeData: data
+                        })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Response from server:', data);
+                        // Handle response from server if needed
+                    })
+                    .catch(error => {
+                        console.error('Error sending data to server:', error);
+                    });
             }
 
             var html5QrcodeScanner = new Html5QrcodeScanner(

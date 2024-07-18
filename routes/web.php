@@ -20,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::get('/fasilitas/makan', [FasilitasController::class, 'makan']);
+Route::post('/process-qr-code', [QrCodeController::class, 'processQrCode']);
