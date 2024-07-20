@@ -4,7 +4,7 @@
     <header class="bg-primary bg-gradient text-white">
         <div class="container px-4 text-center">
             <h1 class="fw-bolder">Welcome to Dinasty Singhasari Group</h1>
-            <a class="btn btn-lg btn-light" href="#">Login</a>
+            <a class="btn btn-lg btn-light" data-bs-toggle="modal" data-bs-target="#modallogin">Login</a>
         </div>
     </header>
     <!-- About section-->
@@ -52,4 +52,28 @@
             <p class="m-0 text-center text-white">Copyright &copy; DSG 2024</p>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modallogin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="inputUser" class="form-label">NIK</label>
+                    <input type="text" id="inputUser" class="form-control mb-2" aria-describedby="userHelpBlock">
+
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
