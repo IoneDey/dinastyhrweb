@@ -13,7 +13,6 @@
 
     <script src="{{ asset('public/js/html5-qrcode.min.js') }}"></script>
     <div id="qr-reader" style="width:300px"></div>
-    <div id="qr-reader-results">{{ $qrCodeScanned }}</div>
 
     <script>
         function docReady(fn) {
@@ -57,6 +56,7 @@
                     .then(data => {
                         console.log('Response from server:', data);
                         // Handle response from server if needed
+                        alert('Hasil scan QR Code: ' + data.qrCodeData);
                     })
                     .catch(error => {
                         console.error('Error sending data to server:', error);
@@ -70,6 +70,43 @@
                 });
             html5QrcodeScanner.render(onScanSuccess);
         });
+
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0];
+
+            if (!file) {
+                alert('Please select a file to upload.');
+                return;
+            }
+
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var imageSrc = event.target.result;
+                scanQRCodeFromImage(imageSrc);
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function scanQRCodeFromImage(imageSrc) {
+            var html5QrcodeScanner = new Html5QrcodeScanner(
+                "qr-reader-results", {
+                    fps: 10,
+                    qrbox: 200
+                }
+            );
+            html5QrcodeScanner.scanFile(imageSrc)
+                .then(decodedText => {
+                    alert('Scanned QR Code result: ' + decodedText);
+                    // Lakukan apa yang Anda ingin lakukan dengan hasil QR Code di sini
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('QR Code scan error: ' + err);
+                });
+        }
+    </script>
     </script>
 
 </body>
