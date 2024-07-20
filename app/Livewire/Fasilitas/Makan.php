@@ -14,6 +14,8 @@ class Makan extends Component {
     }
 
     public function render() {
-        return view('livewire.fasilitas.makan')->layout('components.layouts.app');
+        return view('livewire.fasilitas.makan')->layout('components.layouts.app', [
+            'menu' => 'panel',
+        ]);
     }
 }

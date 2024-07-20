@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::get('/', App\Livewire\Main::class);
 Route::get('/fasilitas/makan', App\Livewire\Fasilitas\Makan::class);
