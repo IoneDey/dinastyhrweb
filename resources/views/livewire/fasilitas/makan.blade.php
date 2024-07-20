@@ -1,8 +1,29 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
+    <style>
+        #qr-reader {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+
+        .content-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+    </style>
+
     <script src="{{ asset('public/js/html5-qrcode.min.js') }}"></script>
-    <div id="qr-reader" style="width:300px"></div>
-    <div id="qr-reader-results">{{ $qrCodeScanned }}</div>
+
+    <header class="bg-primary bg-gradient text-white">
+        <div class="content-center">
+            <div id="qr-reader" style="width:300px"></div>
+            <div id="qr-reader-results">{{ $qrCodeScanned }}</div>
+        </div>
+    </header>
 
     <script>
         function docReady(fn) {
