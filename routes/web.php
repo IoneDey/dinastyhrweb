@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/fasilitas/makan', App\Livewire\fasilitas\Makan::class);
+Route::get('/fasilitas/makan', App\Livewire\Fasilitas\Makan::class);
