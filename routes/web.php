@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\FasilitasController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,5 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/fasilitas/makan', [FasilitasController::class, 'makan']);
-Route::post('/process-qr-code', [QrCodeController::class, 'processQrCode']);
+Route::get('/fasilitas/makan', App\Livewire\fasilitas\Makan::class);
