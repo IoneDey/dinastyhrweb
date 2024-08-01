@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Main extends Component {
     public function render() {
-        return view('livewire.main')->layout('components.layouts.app', [
+        return view('livewire.mainform')->layout('components.layouts.app', [
             'menu' => 'main',
         ]);
     }

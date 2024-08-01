@@ -3,7 +3,7 @@
     <!-- Header-->
     <header class="bg-primary bg-gradient text-white">
         <div class="container px-4 text-center">
-            <h1 class="fw-bolder">Welcome to Dinasty Singhasari Group</h1>
+            <h1 class="fw-bolder">Welcome to Dinasty Singhasari Group New</h1>
             <a class="btn btn-lg btn-light" data-bs-toggle="modal" data-bs-target="#modallogin">Login</a>
         </div>
     </header>
